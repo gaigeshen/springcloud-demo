@@ -1,0 +1,27 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: spring-cloud-eureka-consumer
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: 127.0.0.1:8082
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka,http://127.0.0.1:8762/eureka
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 2000
+        read-timeout: 5000
+        logger-level: full

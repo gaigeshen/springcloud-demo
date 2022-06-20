@@ -1,0 +1,27 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: spring-cloud-eureka-provider
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/demo
+    username: root
+    password: 123456
+  jpa:
+    show-sql: true
+    open-in-view: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: 127.0.0.1:8081
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka,http://127.0.0.1:8762/eureka
