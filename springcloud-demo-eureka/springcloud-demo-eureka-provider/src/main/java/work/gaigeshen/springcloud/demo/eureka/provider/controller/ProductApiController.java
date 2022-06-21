@@ -23,8 +23,8 @@ public class ProductApiController implements ProductApiService {
   }
 
   @Override
-  public ProductCreateBatchResponse createBatchProducts(ProductCreateBatchParameters createBatchParameters) {
-    return productService.createBatchProducts(createBatchParameters);
+  public ProductBatchCreateResponse createBatchProducts(ProductBatchCreateParameters batchCreateParameters) {
+    return productService.createBatchProducts(batchCreateParameters);
   }
 
   @Override

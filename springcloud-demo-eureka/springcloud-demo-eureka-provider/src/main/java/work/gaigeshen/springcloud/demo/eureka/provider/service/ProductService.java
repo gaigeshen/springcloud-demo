@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @Validated
 public interface ProductService {
 
-  ProductCreateBatchResponse createBatchProducts(@NotNull @Valid ProductCreateBatchParameters createBatchParameters);
+  ProductBatchCreateResponse createBatchProducts(@NotNull @Valid ProductBatchCreateParameters batchCreateParameters);
 
   ProductCreateResponse createProduct(@NotNull @Valid ProductCreateParameters createParameters);
 

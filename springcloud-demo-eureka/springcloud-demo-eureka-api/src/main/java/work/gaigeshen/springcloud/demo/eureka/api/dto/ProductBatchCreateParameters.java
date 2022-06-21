@@ -10,7 +10,7 @@ import java.util.Collection;
  * @author gaigeshen
  */
 @Data
-public class ProductCreateBatchParameters {
+public class ProductBatchCreateParameters {
 
   @NotEmpty
   private Collection<ProductCreateParameters> batchCreateParameters;

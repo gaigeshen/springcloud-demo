@@ -9,7 +9,7 @@ import java.util.Collection;
  * @author gaigeshen
  */
 @Data
-public class ProductCreateBatchResponse {
+public class ProductBatchCreateResponse {
 
   private Collection<ProductCreateResponse> batchCreateResponses;
 }

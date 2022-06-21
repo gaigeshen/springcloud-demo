@@ -39,12 +39,12 @@ public class ProductServiceImpl implements ProductService {
 
   @Transactional
   @Override
-  public ProductCreateBatchResponse createBatchProducts(ProductCreateBatchParameters createBatchParameters) {
+  public ProductBatchCreateResponse createBatchProducts(ProductBatchCreateParameters batchCreateParameters) {
     Collection<ProductCreateResponse> batchCreateResponses = new ArrayList<>();
-    for (ProductCreateParameters parameter : createBatchParameters.getBatchCreateParameters()) {
+    for (ProductCreateParameters parameter : batchCreateParameters.getBatchCreateParameters()) {
       batchCreateResponses.add(createProduct(parameter));
     }
-    ProductCreateBatchResponse response = new ProductCreateBatchResponse();
+    ProductBatchCreateResponse response = new ProductBatchCreateResponse();
     response.setBatchCreateResponses(batchCreateResponses);
     return response;
   }

@@ -21,7 +21,7 @@ public class ProductController {
   }
 
   @PostMapping("/batch")
-  public ProductCreateBatchResponse createBatchProducts(@RequestBody ProductCreateBatchParameters createBatchParameters) {
+  public ProductBatchCreateResponse createBatchProducts(@RequestBody ProductBatchCreateParameters createBatchParameters) {
     return productApiService.createBatchProducts(createBatchParameters);
   }
 

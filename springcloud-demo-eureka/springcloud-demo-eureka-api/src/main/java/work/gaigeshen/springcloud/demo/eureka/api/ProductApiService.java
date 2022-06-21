@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import work.gaigeshen.springcloud.demo.eureka.api.commons.PageParameters;
 import work.gaigeshen.springcloud.demo.eureka.api.commons.PageResponse;
-import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductCreateBatchParameters;
-import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductCreateBatchResponse;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductBatchCreateParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductBatchCreateResponse;
 import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductCreateParameters;
 import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductCreateResponse;
 import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductQueryParameters;
@@ -21,7 +21,7 @@ import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductQueryResponse;
 public interface ProductApiService {
 
   @PostMapping("/batch")
-  ProductCreateBatchResponse createBatchProducts(@RequestBody ProductCreateBatchParameters createBatchParameters);
+  ProductBatchCreateResponse createBatchProducts(@RequestBody ProductBatchCreateParameters batchCreateParameters);
 
   @PostMapping
   ProductCreateResponse createProduct(@RequestBody ProductCreateParameters createParameters);
