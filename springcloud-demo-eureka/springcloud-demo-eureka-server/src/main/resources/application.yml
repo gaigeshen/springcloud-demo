@@ -1,7 +1,3 @@
-spring:
-  profiles:
-    active: eureka1
----
 server:
   port: 8761
 spring:
