@@ -1,12 +1,13 @@
 package work.gaigeshen.springcloud.demo.eureka.provider.service;
 
 import org.springframework.validation.annotation.Validated;
-import work.gaigeshen.springcloud.demo.eureka.api.commons.PageParameters;
 import work.gaigeshen.springcloud.demo.eureka.api.commons.PageResponse;
 import work.gaigeshen.springcloud.demo.eureka.api.dto.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  *
@@ -15,9 +16,11 @@ import javax.validation.constraints.NotNull;
 @Validated
 public interface ProductService {
 
-  ProductBatchCreateResponse createBatchProducts(@NotNull @Valid ProductBatchCreateParameters batchCreateParameters);
+  void createBatchProducts(@NotEmpty @Valid List<ProductCreateParameters> batchCreateParameters);
 
-  ProductCreateResponse createProduct(@NotNull @Valid ProductCreateParameters createParameters);
+  void createProduct(@NotNull @Valid ProductCreateParameters createParameters);
 
-  PageResponse<ProductQueryResponse> queryProducts(@NotNull @Valid ProductQueryParameters queryParameters, @NotNull @Valid PageParameters pageParameters);
+  void deleteProduct(@NotNull @Valid ProductDeleteParameters deleteParameters);
+
+  PageResponse<ProductQueryResponse> queryProducts(@NotNull @Valid ProductQueryParameters queryParameters);
 }

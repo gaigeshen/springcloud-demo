@@ -25,3 +25,7 @@ feign:
         connect-timeout: 2000
         read-timeout: 5000
         logger-level: full
+logging:
+  level:
+    root: info
+    work.gaigeshen: debug

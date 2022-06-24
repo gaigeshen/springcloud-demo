@@ -3,10 +3,13 @@ package work.gaigeshen.springcloud.demo.eureka.provider.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import work.gaigeshen.springcloud.demo.eureka.api.ProductApiService;
-import work.gaigeshen.springcloud.demo.eureka.api.commons.PageParameters;
 import work.gaigeshen.springcloud.demo.eureka.api.commons.PageResponse;
+import work.gaigeshen.springcloud.demo.eureka.api.commons.web.Result;
+import work.gaigeshen.springcloud.demo.eureka.api.commons.web.ResultCreator;
 import work.gaigeshen.springcloud.demo.eureka.api.dto.*;
 import work.gaigeshen.springcloud.demo.eureka.provider.service.ProductService;
+
+import java.util.List;
 
 /**
  *
@@ -23,17 +26,25 @@ public class ProductApiController implements ProductApiService {
   }
 
   @Override
-  public ProductBatchCreateResponse createBatchProducts(ProductBatchCreateParameters batchCreateParameters) {
-    return productService.createBatchProducts(batchCreateParameters);
+  public Result<?> createBatchProducts(List<ProductCreateParameters> batchCreateParameters) {
+    productService.createBatchProducts(batchCreateParameters);
+    return ResultCreator.create();
   }
 
   @Override
-  public ProductCreateResponse createProduct(ProductCreateParameters createParameters) {
-    return productService.createProduct(createParameters);
+  public Result<?> createProduct(ProductCreateParameters createParameters) {
+    productService.createProduct(createParameters);
+    return ResultCreator.create();
   }
 
   @Override
-  public PageResponse<ProductQueryResponse> queryProducts(ProductQueryParameters queryParameters, PageParameters pageParameters) {
-    return productService.queryProducts(queryParameters, pageParameters);
+  public Result<?> deleteProduct(ProductDeleteParameters deleteParameters) {
+    productService.deleteProduct(deleteParameters);
+    return ResultCreator.create();
+  }
+
+  @Override
+  public Result<PageResponse<ProductQueryResponse>> queryProducts(ProductQueryParameters queryParameters) {
+    return ResultCreator.create(productService.queryProducts(queryParameters));
   }
 }

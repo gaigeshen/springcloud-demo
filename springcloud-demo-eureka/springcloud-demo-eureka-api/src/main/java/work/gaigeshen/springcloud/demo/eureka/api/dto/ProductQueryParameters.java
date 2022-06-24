@@ -1,6 +1,8 @@
 package work.gaigeshen.springcloud.demo.eureka.api.dto;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import work.gaigeshen.springcloud.demo.eureka.api.commons.PageParameters;
 
 import java.math.BigDecimal;
 
@@ -8,8 +10,9 @@ import java.math.BigDecimal;
  *
  * @author gaigeshen
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class ProductQueryParameters {
+public class ProductQueryParameters extends PageParameters {
 
   private String name;
 

@@ -7,7 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import work.gaigeshen.springcloud.demo.eureka.api.commons.PageParameters;
 import work.gaigeshen.springcloud.demo.eureka.api.commons.PageResponse;
 import work.gaigeshen.springcloud.demo.eureka.api.commons.PageResponseCreator;
 import work.gaigeshen.springcloud.demo.eureka.api.dto.*;
@@ -39,36 +38,39 @@ public class ProductServiceImpl implements ProductService {
 
   @Transactional
   @Override
-  public ProductBatchCreateResponse createBatchProducts(ProductBatchCreateParameters batchCreateParameters) {
-    Collection<ProductCreateResponse> batchCreateResponses = new ArrayList<>();
-    for (ProductCreateParameters parameter : batchCreateParameters.getBatchCreateParameters()) {
-      batchCreateResponses.add(createProduct(parameter));
+  public void createBatchProducts(List<ProductCreateParameters> batchCreateParameters) {
+    Collection<Product> products = new ArrayList<>();
+    for (ProductCreateParameters createParameters : batchCreateParameters) {
+      Product product = new Product();
+      products.add(product);
+      BeanUtils.copyProperties(createParameters, product);
     }
-    ProductBatchCreateResponse response = new ProductBatchCreateResponse();
-    response.setBatchCreateResponses(batchCreateResponses);
-    return response;
+    productRepository.saveAll(products);
   }
 
   @Transactional
   @Override
-  public ProductCreateResponse createProduct(ProductCreateParameters createParameters) {
+  public void createProduct(ProductCreateParameters createParameters) {
     Product product = new Product();
     BeanUtils.copyProperties(createParameters, product);
     productRepository.save(product);
-    ProductCreateResponse createResponse = new ProductCreateResponse();
-    createResponse.setId(product.getId());
-    return createResponse;
+  }
+
+  @Transactional
+  @Override
+  public void deleteProduct(ProductDeleteParameters deleteParameters) {
+    productRepository.findById(deleteParameters.getId()).ifPresent(productRepository::delete);
   }
 
   @Override
-  public PageResponse<ProductQueryResponse> queryProducts(ProductQueryParameters queryParameters, PageParameters pageParameters) {
+  public PageResponse<ProductQueryResponse> queryProducts(ProductQueryParameters queryParameters) {
     // 页码从零开始的
-    Pageable pageRequest = PageRequest.of(pageParameters.getPage() - 1, pageParameters.getSize());
+    Pageable pageRequest = PageRequest.of(queryParameters.getPage() - 1, queryParameters.getSize());
     // 分页查询
     Page<Product> pageResult = productRepository.findAll(new QuerySpecification(queryParameters), pageRequest);
 
     if (pageResult.isEmpty()) {
-      return PageResponseCreator.create(pageParameters);
+      return PageResponseCreator.create(queryParameters);
     }
     Page<ProductQueryResponse> responsePageResult = pageResult.map(product -> {
       ProductQueryResponse queryResponse = new ProductQueryResponse();
@@ -76,7 +78,7 @@ public class ProductServiceImpl implements ProductService {
       return queryResponse;
     });
 
-    return PageResponseCreator.create(pageParameters, responsePageResult.getContent(), (int) pageResult.getTotalElements());
+    return PageResponseCreator.create(queryParameters, responsePageResult.getContent(), (int) pageResult.getTotalElements());
   }
 
   private static class QuerySpecification implements Specification<Product> {
@@ -91,10 +93,10 @@ public class ProductServiceImpl implements ProductService {
     public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
       List<Predicate> predicates = new ArrayList<>();
       if (Objects.nonNull(queryParameters.getName())) {
-        predicates.add(criteriaBuilder.like(root.get("name"), queryParameters.getName()));
+        predicates.add(criteriaBuilder.like(root.get("name"), "%" + queryParameters.getName() + "%"));
       }
       if (Objects.nonNull(queryParameters.getCategory())) {
-        predicates.add(criteriaBuilder.like(root.get("category"), queryParameters.getCategory()));
+        predicates.add(criteriaBuilder.like(root.get("category"), "%" + queryParameters.getCategory() + "%"));
       }
       if (Objects.nonNull(queryParameters.getLowPrice())) {
         predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("price"), queryParameters.getLowPrice()));
