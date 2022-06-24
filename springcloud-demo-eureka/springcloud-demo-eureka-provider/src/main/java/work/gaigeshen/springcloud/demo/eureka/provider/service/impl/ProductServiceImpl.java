@@ -55,7 +55,9 @@ public class ProductServiceImpl implements ProductService {
     Product product = new Product();
     BeanUtils.copyProperties(createParameters, product);
     productRepository.save(product);
-    return new ProductCreateResponse();
+    ProductCreateResponse createResponse = new ProductCreateResponse();
+    createResponse.setId(product.getId());
+    return createResponse;
   }
 
   @Override

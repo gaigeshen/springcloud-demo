@@ -13,9 +13,6 @@ import java.math.BigDecimal;
 @Data
 public class ProductCreateParameters {
 
-  @NotNull
-  private Long id;
-
   @NotBlank
   private String name;
 

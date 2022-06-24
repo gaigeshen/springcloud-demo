@@ -9,4 +9,5 @@ import lombok.Data;
 @Data
 public class ProductCreateResponse {
 
+  private Long id;
 }
