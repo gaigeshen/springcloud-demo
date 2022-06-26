@@ -3,9 +3,12 @@ package work.gaigeshen.springcloud.demo.eureka.api;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import work.gaigeshen.springcloud.demo.eureka.api.commons.PageResponse;
-import work.gaigeshen.springcloud.demo.eureka.api.commons.web.Result;
-import work.gaigeshen.springcloud.demo.eureka.api.dto.*;
+import work.gaigeshen.springcloud.demo.commons.PageResponse;
+import work.gaigeshen.springcloud.demo.commons.web.Result;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductCreateParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductDeleteParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductQueryParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductQueryResponse;
 
 import java.util.List;
 

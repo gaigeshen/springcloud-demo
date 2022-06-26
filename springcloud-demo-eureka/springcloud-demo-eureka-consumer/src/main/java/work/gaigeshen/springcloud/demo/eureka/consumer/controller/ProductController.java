@@ -2,10 +2,13 @@ package work.gaigeshen.springcloud.demo.eureka.consumer.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import work.gaigeshen.springcloud.demo.commons.PageResponse;
+import work.gaigeshen.springcloud.demo.commons.web.Result;
 import work.gaigeshen.springcloud.demo.eureka.api.ProductApiService;
-import work.gaigeshen.springcloud.demo.eureka.api.commons.PageResponse;
-import work.gaigeshen.springcloud.demo.eureka.api.commons.web.Result;
-import work.gaigeshen.springcloud.demo.eureka.api.dto.*;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductCreateParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductDeleteParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductQueryParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductQueryResponse;
 
 import java.util.List;
 

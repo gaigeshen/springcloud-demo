@@ -57,5 +57,10 @@
             <artifactId>springcloud-demo-eureka-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>work.gaigeshen</groupId>
+            <artifactId>springcloud-demo-commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>

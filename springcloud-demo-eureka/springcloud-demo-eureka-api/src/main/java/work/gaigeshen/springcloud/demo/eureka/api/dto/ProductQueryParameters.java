@@ -2,7 +2,7 @@ package work.gaigeshen.springcloud.demo.eureka.api.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import work.gaigeshen.springcloud.demo.eureka.api.commons.PageParameters;
+import work.gaigeshen.springcloud.demo.commons.PageParameters;
 
 import java.math.BigDecimal;
 

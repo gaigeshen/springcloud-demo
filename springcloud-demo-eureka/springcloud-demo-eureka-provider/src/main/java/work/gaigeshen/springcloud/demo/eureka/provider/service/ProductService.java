@@ -1,8 +1,11 @@
 package work.gaigeshen.springcloud.demo.eureka.provider.service;
 
 import org.springframework.validation.annotation.Validated;
-import work.gaigeshen.springcloud.demo.eureka.api.commons.PageResponse;
-import work.gaigeshen.springcloud.demo.eureka.api.dto.*;
+import work.gaigeshen.springcloud.demo.commons.PageResponse;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductCreateParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductDeleteParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductQueryParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductQueryResponse;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;

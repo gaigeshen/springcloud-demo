@@ -1,4 +1,4 @@
-package work.gaigeshen.springcloud.demo.eureka.api.commons;
+package work.gaigeshen.springcloud.demo.commons;
 
 import java.util.Collections;
 import java.util.List;

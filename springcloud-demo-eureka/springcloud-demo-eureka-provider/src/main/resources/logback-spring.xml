@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-    <!-- 包含默认的配置比如环境变量 -->
+    <!-- 包含默认的配置 -->
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
     <!-- 取应用的名称 -->
     <springProperty scope="context" name="application" source="spring.application.name" defaultValue="spring" />
@@ -19,7 +19,7 @@
         </encoder>
     </appender>
     <!-- 日志收集到监控平台 -->
-    <appender name="skywalking" class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.log.GRPCLogClientAppender">
+    <appender name="Skywalking" class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.log.GRPCLogClientAppender">
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
             <layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.mdc.TraceIdMDCPatternLogbackLayout">
                 <pattern>${FILE_PATTERN}</pattern>
@@ -41,9 +41,9 @@
         </rollingPolicy>
     </appender>
     <!-- 默认日志级别 -->
-    <root level="warn">
+    <root level="info">
         <appender-ref ref="Console" />
-        <appender-ref ref="skywalking" />
+        <appender-ref ref="Skywalking" />
         <appender-ref ref="RollingFile" />
     </root>
     <!-- 自定义日志级别 -->

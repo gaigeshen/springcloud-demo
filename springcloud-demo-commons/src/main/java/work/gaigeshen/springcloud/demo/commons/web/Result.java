@@ -1,4 +1,4 @@
-package work.gaigeshen.springcloud.demo.eureka.api.commons.web;
+package work.gaigeshen.springcloud.demo.commons.web;
 
 import lombok.Data;
 

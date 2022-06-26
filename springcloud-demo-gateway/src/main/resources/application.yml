@@ -1,0 +1,36 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: spring-cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+          route-id-prefix: ROUTE_
+  redis:
+    host: 192.168.1.201
+    port: 31002
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - gateway
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka,http://127.0.0.1:8762/eureka
