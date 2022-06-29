@@ -23,7 +23,7 @@ public class GsonJsonCodec implements JsonCodec {
   }
 
   public GsonJsonCodec() {
-    this(new GsonBuilder().create());
+    this(new GsonBuilder().serializeNulls().create());
   }
 
   @Override
