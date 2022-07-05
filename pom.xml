@@ -46,9 +46,9 @@
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
         <shiro.spring.version>1.9.0</shiro.spring.version>
-        <querydsl.spring.version>5.0.0</querydsl.spring.version>
         <skywalking.toolkit.version>8.11.0</skywalking.toolkit.version>
         <jwt.version>4.0.0</jwt.version>
+        <querydsl.version>5.0.0</querydsl.version>
         <spring.boot.dependencies.version>2.6.7</spring.boot.dependencies.version>
         <spring.cloud.dependencies.version>2021.0.2</spring.cloud.dependencies.version>
     </properties>
@@ -59,11 +59,6 @@
                 <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-spring-boot-web-starter</artifactId>
                 <version>${shiro.spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.querydsl</groupId>
-                <artifactId>querydsl-sql-spring</artifactId>
-                <version>${querydsl.spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.skywalking</groupId>
@@ -79,6 +74,13 @@
                 <groupId>com.auth0</groupId>
                 <artifactId>java-jwt</artifactId>
                 <version>${jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-bom</artifactId>
+                <version>${querydsl.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
