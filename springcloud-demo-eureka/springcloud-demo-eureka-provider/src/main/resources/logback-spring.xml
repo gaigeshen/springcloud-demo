@@ -47,5 +47,5 @@
         <appender-ref ref="RollingFile" />
     </root>
     <!-- 自定义日志级别 -->
-    <logger name="work.gaigeshen" level="debug" />
+    <logger name="com.querydsl" level="debug" />
 </configuration>
