@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.*;
 import work.gaigeshen.springcloud.demo.commons.PageResponse;
 import work.gaigeshen.springcloud.demo.commons.web.Result;
 import work.gaigeshen.springcloud.demo.eureka.api.ProductApiService;
-import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductCreateParameters;
-import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductDeleteParameters;
-import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductQueryParameters;
-import work.gaigeshen.springcloud.demo.eureka.api.dto.ProductQueryResponse;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.product.ProductCreateParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.product.ProductDeleteParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.product.ProductQueryParameters;
+import work.gaigeshen.springcloud.demo.eureka.api.dto.product.ProductQueryResponse;
 
 import java.util.List;
 

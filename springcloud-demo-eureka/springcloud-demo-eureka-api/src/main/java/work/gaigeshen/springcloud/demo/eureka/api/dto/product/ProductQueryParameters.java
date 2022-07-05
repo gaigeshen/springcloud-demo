@@ -1,4 +1,4 @@
-package work.gaigeshen.springcloud.demo.eureka.api.dto;
+package work.gaigeshen.springcloud.demo.eureka.api.dto.product;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
