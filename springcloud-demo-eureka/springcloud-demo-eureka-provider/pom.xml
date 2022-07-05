@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -42,12 +42,6 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
-        <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-sql-spring</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.skywalking</groupId>
             <artifactId>apm-toolkit-logback-1.x</artifactId>
@@ -56,7 +50,6 @@
             <groupId>org.apache.skywalking</groupId>
             <artifactId>apm-toolkit-trace</artifactId>
         </dependency>
-
         <dependency>
             <groupId>work.gaigeshen</groupId>
             <artifactId>springcloud-demo-eureka-api</artifactId>
@@ -68,29 +61,4 @@
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.querydsl</groupId>
-                <artifactId>querydsl-maven-plugin</artifactId>
-                <version>5.0.0</version>
-                <configuration>
-                    <jdbcDriver>com.mysql.cj.jdbc.Driver</jdbcDriver>
-                    <jdbcUrl>jdbc:mysql://127.0.0.1:3306/demo</jdbcUrl>
-                    <jdbcUser>root</jdbcUser>
-                    <jdbcPassword>123456</jdbcPassword>
-                    <packageName>work.gaigeshen.springcloud.demo.eureka.provider.entity</packageName>
-                    <targetFolder>${project.basedir}/target/generated-sources/java</targetFolder>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>8.0.29</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
 </project>

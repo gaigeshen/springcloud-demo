@@ -37,7 +37,6 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.apache.skywalking</groupId>
             <artifactId>apm-toolkit-logback-1.x</artifactId>
@@ -46,7 +45,6 @@
             <groupId>org.apache.skywalking</groupId>
             <artifactId>apm-toolkit-trace</artifactId>
         </dependency>
-
         <dependency>
             <groupId>work.gaigeshen</groupId>
             <artifactId>springcloud-demo-eureka-api</artifactId>

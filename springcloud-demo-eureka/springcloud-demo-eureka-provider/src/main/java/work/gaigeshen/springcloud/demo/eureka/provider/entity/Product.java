@@ -1,38 +1,40 @@
 package work.gaigeshen.springcloud.demo.eureka.provider.entity;
 
-import com.querydsl.sql.Column;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
+@Entity
 public class Product {
 
-  @Column("id")
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column("name")
+  @Column
   private String name;
 
-  @Column("price")
+  @Column
   private BigDecimal price;
 
-  @Column("quantity")
+  @Column
   private Integer quantity;
 
-  @Column("category")
+  @Column
   private String category;
 
-  @Column("description")
+  @Column
   private String description;
 
-  @Column("manufacturer")
+  @Column
   private String manufacturer;
 
-  @Column("create_time")
+  @Column
   private Date createTime;
 
-  @Column("update_time")
+  @Column
   private Date updateTime;
 }
