@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import work.gaigeshen.springcloud.demo.commons.PageResponse;
 import work.gaigeshen.springcloud.demo.commons.web.Result;
-import work.gaigeshen.springcloud.demo.commons.web.ResultCreator;
+import work.gaigeshen.springcloud.demo.commons.web.Results;
 import work.gaigeshen.springcloud.demo.eureka.api.ProductApiService;
 import work.gaigeshen.springcloud.demo.eureka.api.dto.product.ProductCreateParameters;
 import work.gaigeshen.springcloud.demo.eureka.api.dto.product.ProductDeleteParameters;
@@ -34,26 +34,26 @@ public class ProductApiController implements ProductApiService {
   public Result<?> createBatchProducts(List<ProductCreateParameters> batchCreateParameters) {
     log.debug("batch create products: {}", batchCreateParameters);
     productService.createBatchProducts(batchCreateParameters);
-    return ResultCreator.create();
+    return Results.create();
   }
 
   @Override
   public Result<?> createProduct(ProductCreateParameters createParameters) {
     log.debug("create product: {}", createParameters);
     productService.createProduct(createParameters);
-    return ResultCreator.create();
+    return Results.create();
   }
 
   @Override
   public Result<?> deleteProduct(ProductDeleteParameters deleteParameters) {
     log.debug("delete product: {}", deleteParameters);
     productService.deleteProduct(deleteParameters);
-    return ResultCreator.create();
+    return Results.create();
   }
 
   @Override
   public Result<PageResponse<ProductQueryResponse>> queryProducts(ProductQueryParameters queryParameters) {
     log.debug("query products: {}", queryParameters);
-    return ResultCreator.create(productService.queryProducts(queryParameters));
+    return Results.create(productService.queryProducts(queryParameters));
   }
 }

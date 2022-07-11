@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 import work.gaigeshen.springcloud.demo.commons.json.JsonCodec;
 import work.gaigeshen.springcloud.demo.commons.web.HttpStatusResultCode;
 import work.gaigeshen.springcloud.demo.commons.web.Result;
-import work.gaigeshen.springcloud.demo.commons.web.ResultCreator;
+import work.gaigeshen.springcloud.demo.commons.web.Results;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
@@ -35,14 +35,14 @@ public class JWTTokenFilter implements GlobalFilter {
     String authorization = exchange.getRequest().getHeaders().getFirst("Authorization");
 
     if (Objects.isNull(authorization)) {
-      return renderResult(response, ResultCreator.create(HttpStatusResultCode.UNAUTHORIZED));
+      return renderResult(response, Results.create(HttpStatusResultCode.UNAUTHORIZED));
     }
 
     JWTVerifier verifier = JWT.require(Algorithm.HMAC256("")).build();
     try {
       verifier.verify(authorization);
     } catch (JWTVerificationException e) {
-      return renderResult(response, ResultCreator.create(HttpStatusResultCode.FORBIDDEN));
+      return renderResult(response, Results.create(HttpStatusResultCode.FORBIDDEN));
     }
     return chain.filter(exchange);
   }

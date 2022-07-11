@@ -8,6 +8,31 @@ public abstract class Results {
 
   private Results() {  }
 
+  public static <D> Result<D> create(ResultCode resultCode) {
+    Result<D> result = new Result<>();
+    result.setCode(resultCode.getCode());
+    result.setMessage(resultCode.getMessage());
+    return result;
+  }
+
+  public static <D> Result<D> create(ResultCode resultCode, D data) {
+    Result<D> result = new Result<>();
+    result.setCode(resultCode.getCode());
+    result.setMessage(resultCode.getMessage());
+    result.setData(data);
+    return result;
+  }
+
+  public static <D> Result<D> create(D data) {
+    Result<D> result = new Result<>();
+    result.setData(data);
+    return result;
+  }
+
+  public static <D> Result<D> create() {
+    return new Result<>();
+  }
+
   public static <D> D getData(Result<D> result) {
     return getData(result, new ResultValidator<>() { }, new ResultExceptionProducer<>() { });
   }
@@ -21,7 +46,7 @@ public abstract class Results {
   }
 
   public static <D> D getData(Result<D> result, ResultValidator<D> validator, ResultExceptionProducer<D> producer) {
-    if (validator.validate(result)) {
+    if (!validator.validate(result)) {
       throw producer.produce(result);
     }
     return result.getData();

@@ -1,5 +1,7 @@
 package work.gaigeshen.springcloud.demo.commons.web;
 
+import java.util.Objects;
+
 /**
  *
  * @author gaigeshen
@@ -15,5 +17,9 @@ public class ResultException extends RuntimeException {
 
   public Result<?> getResult() {
     return result;
+  }
+
+  public Object getResultData() {
+    return Objects.isNull(result) ? null : result.getData();
   }
 }
