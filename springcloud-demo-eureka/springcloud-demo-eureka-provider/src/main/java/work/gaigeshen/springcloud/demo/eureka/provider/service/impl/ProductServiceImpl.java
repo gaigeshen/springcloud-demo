@@ -14,6 +14,7 @@ import work.gaigeshen.springcloud.demo.eureka.api.dto.product.ProductDeleteParam
 import work.gaigeshen.springcloud.demo.eureka.api.dto.product.ProductQueryParameters;
 import work.gaigeshen.springcloud.demo.eureka.api.dto.product.ProductQueryResponse;
 import work.gaigeshen.springcloud.demo.eureka.provider.entity.Product;
+import work.gaigeshen.springcloud.demo.eureka.provider.mapper.ProductMapper;
 import work.gaigeshen.springcloud.demo.eureka.provider.repository.ProductRepository;
 import work.gaigeshen.springcloud.demo.eureka.provider.service.ProductService;
 
@@ -32,8 +33,11 @@ public class ProductServiceImpl implements ProductService {
 
   private final ProductRepository productRepository;
 
-  public ProductServiceImpl(ProductRepository productRepository) {
+  private final ProductMapper productMapper;
+
+  public ProductServiceImpl(ProductRepository productRepository, ProductMapper productMapper) {
     this.productRepository = productRepository;
+    this.productMapper = productMapper;
   }
 
   @Transactional
@@ -68,6 +72,18 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public PageResponse<ProductQueryResponse> queryProducts(ProductQueryParameters queryParameters) {
+
+
+    work.gaigeshen.springcloud.demo.eureka.provider.config.Page<?> page = new work.gaigeshen.springcloud.demo.eureka.provider.config.Page<>(5, 10);
+    System.out.println("page = " + page);
+
+    work.gaigeshen.springcloud.demo.eureka.provider.config.Page<Product> mybatisProduct = productMapper.selectPage(page);
+
+    System.out.println("mybatisProduct = " + mybatisProduct);
+    System.out.println("mybatisProduct.getIndex() = " + mybatisProduct.getIndex());
+    System.out.println("mybatisProduct.getSize() = " + mybatisProduct.getSize());
+    System.out.println("mybatisProduct.getTotal() = " + mybatisProduct.getTotal());
+
     // 页码从零开始的
     Pageable pageRequest = PageRequest.of(queryParameters.getPage() - 1, queryParameters.getSize());
     // 分页查询

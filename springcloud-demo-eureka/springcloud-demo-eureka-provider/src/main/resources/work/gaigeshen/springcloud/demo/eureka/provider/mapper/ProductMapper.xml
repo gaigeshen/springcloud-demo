@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="work.gaigeshen.springcloud.demo.eureka.provider.mapper.ProductMapper">
+    <resultMap id="BaseResultMap" type="work.gaigeshen.springcloud.demo.eureka.provider.entity.Product">
+        <id property="id" column="id"/>
+        <result property="name" column="name" />
+        <result property="price" column="price" />
+        <result property="quantity" column="quantity" />
+        <result property="category" column="category" />
+        <result property="manufacturer" column="manufacturer" />
+        <result property="createTime" column="create_time" />
+        <result property="updateTime" column="update_time" />
+    </resultMap>
+    <sql id="BaseColumns">
+        id, name, price, quantity, category, manufacturer, create_time, update_time
+    </sql>
+    <insert id="insert" keyProperty="id">
+        insert into product (name, price, quantity, category, manufacturer, create_time, update_time)
+            values (#{name}, #{price}, #{quantity}, #{category}, #{manufacturer}, #{createTime}, #{updateTime})
+    </insert>
+    <insert id="insertBatch" keyProperty="id">
+        insert into product (name, price, quantity, category, manufacturer, create_time, update_time) values
+        <foreach collection="products" item="item" separator=",">
+            <trim prefix="(" suffix=")">
+                #{item.name}, #{item.price}, #{item.quantity}, #{item.category}, #{item.manufacturer},
+                #{item.createTime}, #{item.updateTime}
+            </trim>
+        </foreach>
+    </insert>
+    <insert id="insertSelective" keyProperty="id">
+        <trim prefix="insert into product (" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="price != null">price,</if>
+            <if test="quantity != null">quantity,</if>
+            <if test="category != null">category,</if>
+            <if test="manufacturer != null">manufacturer,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="price != null">#{price},</if>
+            <if test="quantity != null">#{quantity},</if>
+            <if test="category != null">#{category},</if>
+            <if test="manufacturer != null">#{manufacturer},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+        </trim>
+    </insert>
+    <delete id="deleteById">
+        delete from product where id = #{id}
+    </delete>
+    <update id="updateById">
+        update product
+        set name = #{name},
+            price = #{price},
+            quantity = #{quantity},
+            category = #{category},
+            manufacturer = #{manufacturer},
+            create_time = #{createTime},
+            update_time = #{updateTime}
+        where id = #{id}
+    </update>
+    <update id="updateByIdSelective">
+        update product
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="quantity != null">quantity = #{quantity},</if>
+            <if test="category != null">category = #{category},</if>
+            <if test="manufacturer != null">manufacturer = #{manufacturer},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+    <select id="selectById" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumns" />
+        from product
+        where id = #{id}
+    </select>
+    <select id="selectPage" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumns" />
+        from product
+    </select>
+</mapper>
