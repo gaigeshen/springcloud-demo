@@ -42,6 +42,7 @@
 
     <properties>
         <jwt.version>4.0.0</jwt.version>
+        <guava.version>31.1-jre</guava.version>
         <skywalking.toolkit.version>8.11.0</skywalking.toolkit.version>
         <shiro.spring.version>1.9.1</shiro.spring.version>
         <mybatis.spring.version>2.2.2</mybatis.spring.version>
@@ -61,6 +62,11 @@
                 <version>${jwt.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.skywalking</groupId>
                 <artifactId>apm-toolkit-logback-1.x</artifactId>
                 <version>${skywalking.toolkit.version}</version>
@@ -69,11 +75,6 @@
                 <groupId>org.apache.skywalking</groupId>
                 <artifactId>apm-toolkit-trace</artifactId>
                 <version>${skywalking.toolkit.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.shiro</groupId>
-                <artifactId>shiro-spring-boot-starter</artifactId>
-                <version>${shiro.spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
@@ -118,7 +119,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.7</version>
+                <version>3.4.1</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
